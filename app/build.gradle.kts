@@ -59,6 +59,23 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    //Corrutines
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Añadir la librería de Icons-Extended
+    implementation(libs.androidx.material.icons.extended)
+
+    //OpenAI
+    implementation(libs.openai.client)
+
+    //Ktor
+    implementation(libs.ktor.client.android)
+    implementation(libs.ktor.client.okhttp)
+
+    //Coil
+    implementation(libs.coil.compose)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
