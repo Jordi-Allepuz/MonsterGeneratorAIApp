@@ -113,31 +113,39 @@ class MonsterGeneratorViewModel : ViewModel() {
 
             val images :List<ImageURL>
 
-            if (masked) {
-                images = openAI.imageURL(
-                    ImageEdit(
-                        image = FileSource(
-                            name = Config.IMAGE_FILE,
-                            soure = context.resources.openRawResource(R.raw.image).source()
-                        ),
-                        mask = FileSource(
-                            name = Config.MASK_FILE,
-                            soure = context.resources.openRawResource(R.raw.mask).source()
-                        ),
-                        prompt = prompt,
-                        n = 1,
-                        size = ImageSize.is1024x1024
-                    )
+//            if (masked) {
+//                images = openAI.imageURL(
+//                    ImageEdit(
+//                        image = FileSource(
+//                            name = Config.IMAGE_FILE,
+//                            soure = context.resources.openRawResource(R.raw.image).source()
+//                        ),
+//                        mask = FileSource(
+//                            name = Config.MASK_FILE,
+//                            soure = context.resources.openRawResource(R.raw.mask).source()
+//                        ),
+//                        prompt = prompt,
+//                        n = 1,
+//                        size = ImageSize.is1024x1024
+//                    )
+//                )
+//            }else{
+//                images = openAI.imageURL(
+//                    creation = ImageCreation(
+//                        prompt = prompt,
+//                        n = 1,
+//                        size = ImageSize.is1024x1024
+//                    )
+//                )
+//            }
+
+            images = openAI.imageURL(
+                creation = ImageCreation(
+                    prompt = prompt,
+                    n = 1,
+                    size = ImageSize.is1024x1024
                 )
-            }else{
-                images = openAI.imageURL(
-                    creation = ImageCreation(
-                        prompt = prompt,
-                        n = 1,
-                        size = ImageSize.is1024x1024
-                    )
-                )
-            }
+            )
 
             imageURL(images.first().url)
 

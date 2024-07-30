@@ -67,7 +67,7 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
 
     //OpenAI
-    implementation ("com.aallam.openai:openai-client:3.3.0")
+    implementation (libs.com.aallam.openai.openai.client)
 
     //Ktor
     implementation(libs.ktor.client.android)

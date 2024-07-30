@@ -58,54 +58,53 @@ fun GeneratorColumn(
             enabled = games.isNotEmpty() && elements.isNotEmpty()
         ) {
 
-            viewModel.generateImage(context,games, elements, masked) {
+            viewModel.generateImage(context, games, elements, masked) {
                 imageURL = it
             }
-
-            Row(
-                horizontalArrangement = Arrangement.End,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxSize()
-            ) {
-                Text(text = "Usar Mascara", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-
-                Spacer(modifier = Modifier.size(8.dp))
-
-                Switch(checked = masked , onCheckedChange = { masked= it})
-            }
-
-
         }
-
-        if (imageURL.isNotEmpty()) {
-            AsyncImage(
-                model = imageURL,
-                contentDescription = "monster",
-                modifier = Modifier.fillMaxSize()
-            )
-        }
-
 
         Row(
-            horizontalArrangement = Arrangement.Center,
+            horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier.fillMaxSize()
         ) {
+            Text(text = "Usar Mascara", fontSize = 20.sp, fontWeight = FontWeight.Bold)
 
-            IconButton(onClick = {
-                clipBoard.setText(AnnotatedString(imageURL))
-                Toast.makeText(context, "URL copiada", Toast.LENGTH_SHORT).show()
-            }) {
-                Icon(
-                    Icons.Filled.ContentCopy,
-                    contentDescription = "Copiar URL",
-                    modifier = Modifier.size(ButtonDefaults.IconSize)
-                )
-            }
+            Spacer(modifier = Modifier.size(8.dp))
 
-            Text(text = "Copiar Imagen", fontSize = 20.sp, fontWeight = FontWeight.Bold)
-
+            Switch(checked = masked, onCheckedChange = { masked = it })
         }
 
     }
+
+    if (imageURL.isNotEmpty()) {
+        AsyncImage(
+            model = imageURL,
+            contentDescription = "monster",
+            modifier = Modifier.fillMaxSize()
+        )
+    }
+
+
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.fillMaxSize()
+    ) {
+
+        IconButton(onClick = {
+            clipBoard.setText(AnnotatedString(imageURL))
+            Toast.makeText(context, "URL copiada", Toast.LENGTH_SHORT).show()
+        }) {
+            Icon(
+                Icons.Filled.ContentCopy,
+                contentDescription = "Copiar URL",
+                modifier = Modifier.size(ButtonDefaults.IconSize)
+            )
+        }
+
+        Text(text = "Copiar Imagen", fontSize = 20.sp, fontWeight = FontWeight.Bold)
+
+    }
+
 }
