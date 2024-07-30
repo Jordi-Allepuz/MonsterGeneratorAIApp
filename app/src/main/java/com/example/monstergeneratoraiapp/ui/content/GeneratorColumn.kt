@@ -31,14 +31,17 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.monstergeneratoraiapp.ui.components.ActionButton
 import com.example.monstergeneratoraiapp.ui.components.TitleText
+import com.example.monstergeneratoraiapp.ui.data.Tipos
 import com.example.monstergeneratoraiapp.viewmodel.MonsterGeneratorViewModel
 
 @Composable
 fun GeneratorColumn(
     context: Context,
     viewModel: MonsterGeneratorViewModel,
-    games: String,
-    elements: String
+    tipo1: String,
+    tipo2: String,
+    caracter:String,
+    tamaño: String
 ) {
 
     var imageURL by remember { mutableStateOf("") }
@@ -55,10 +58,10 @@ fun GeneratorColumn(
             "Generar",
             Icons.Filled.CatchingPokemon,
             "Genera el Pokemon",
-            enabled = games.isNotEmpty() && elements.isNotEmpty()
+            enabled = tipo1.isNotEmpty() && tipo2.isNotEmpty() && caracter.isNotEmpty() && tamaño.isNotEmpty()
         ) {
 
-            viewModel.generateImage(context, games, elements, masked) {
+            viewModel.generateImage(context, tipo1, tipo2, caracter, tamaño, masked) {
                 imageURL = it
             }
         }

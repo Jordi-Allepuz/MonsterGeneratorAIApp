@@ -96,8 +96,10 @@ class MonsterGeneratorViewModel : ViewModel() {
     @OptIn(BetaOpenAI::class)
     fun generateImage(
         context: Context,
-        games: String,
-        elements: String,
+        tipo1: String,
+        tipo2: String,
+        caracter: String,
+        tamaño: String,
         masked: Boolean,
         imageURL: (String) -> Unit
     ) =
@@ -105,47 +107,48 @@ class MonsterGeneratorViewModel : ViewModel() {
 
             startLoading()
 
-            var prompt = "eSports logo, vector logo, ${games.trim()}, ${elements.trim()}"
+//            var prompt = "pokemon image, vector image, ${tipo1.trim()}, ${tipo2.trim()}, ${caracter.trim()}, ${tamaño.trim()}"
+
+            var prompt =
+                "Generate an image of a Pokémon, vector image, with the following characteristics: \n" +
+                        "- Types: ${tipo1.trim()}, ${tipo2.trim()}\n" +
+                        "- Character:  ${caracter.trim()} \n" +
+                        "- Size: ${tamaño.trim()}\n"
+
 
             if (info.isNotEmpty()) {
-                prompt += ", ${info.trim()}"
+//                prompt += ", ${info.trim()}"
+                prompt += "-Additional Features: ${info.trim()}"
             }
 
-            val images :List<ImageURL>
+            val images: List<ImageURL>
 
-//            if (masked) {
-//                images = openAI.imageURL(
-//                    ImageEdit(
-//                        image = FileSource(
-//                            name = Config.IMAGE_FILE,
-//                            soure = context.resources.openRawResource(R.raw.image).source()
-//                        ),
-//                        mask = FileSource(
-//                            name = Config.MASK_FILE,
-//                            soure = context.resources.openRawResource(R.raw.mask).source()
-//                        ),
-//                        prompt = prompt,
-//                        n = 1,
-//                        size = ImageSize.is1024x1024
-//                    )
-//                )
-//            }else{
-//                images = openAI.imageURL(
-//                    creation = ImageCreation(
-//                        prompt = prompt,
-//                        n = 1,
-//                        size = ImageSize.is1024x1024
-//                    )
-//                )
-//            }
+            if (masked) {
 
-            images = openAI.imageURL(
-                creation = ImageCreation(
-                    prompt = prompt,
-                    n = 1,
-                    size = ImageSize.is1024x1024
+                images = openAI.imageURL(
+                    ImageEdit(
+                        image = FileSource(
+                            name = Config.IMAGE_FILE,
+                            source = context.resources.openRawResource(R.raw.pokeball).source()
+                        ),
+                        mask = FileSource(
+                            name = Config.MASK_FILE,
+                            source = context.resources.openRawResource(R.raw.pokeball2).source()
+                        ),
+                        prompt = prompt,
+                        n = 1,
+                        size = ImageSize.is1024x1024
+                    )
                 )
-            )
+            }else{
+                images = openAI.imageURL(
+                    creation = ImageCreation(
+                        prompt = prompt,
+                        n = 1,
+                        size = ImageSize.is1024x1024
+                    )
+                )
+            }
 
             imageURL(images.first().url)
 

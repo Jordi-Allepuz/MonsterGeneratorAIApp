@@ -66,8 +66,10 @@ fun Content() {
 
     val context = LocalContext.current
 
-    var games by remember { mutableStateOf("") }
-    var elements by remember { mutableStateOf("") }
+    var tipo1 by remember { mutableStateOf("") }
+    var tipo2 by remember { mutableStateOf("") }
+    var caracter by remember { mutableStateOf("") }
+    var tamaño by remember { mutableStateOf("") }
 
     val scrollState = rememberScrollState()
 
@@ -80,7 +82,7 @@ fun Content() {
     ) { padding ->
 
 
-        if (viewModel.loading){
+        if (viewModel.loading) {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
@@ -100,15 +102,19 @@ fun Content() {
         ) {
 
             DataColumn(
-                games,
-                elements,
-                onTiposChange = { games = it },
-                onTamañoChange = { elements = it }
+                tipo1,
+                tipo2,
+                caracter,
+                tamaño,
+                onTipo1Change = { tipo1 = it },
+                onTipo2Change = { tipo2 = it },
+                onCaracterChange = { caracter = it },
+                onTamañoChange = { tamaño = it }
             )
 
             InfoColumn(context, MonsterGeneratorViewModel())
 
-            GeneratorColumn(context, viewModel, games, elements)
+            GeneratorColumn(context, viewModel, tipo1, tipo2, caracter, tamaño)
 
         }
 

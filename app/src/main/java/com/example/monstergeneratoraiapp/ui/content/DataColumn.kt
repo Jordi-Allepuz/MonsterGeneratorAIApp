@@ -13,9 +13,13 @@ import com.example.monstergeneratoraiapp.ui.data.Tipos
 
 @Composable
 fun DataColumn(
-    tipos: String,
+    tipo1: String,
+    tipo2: String,
+    caracter: String,
     tamaño: String,
-    onTiposChange: (String) -> Unit,
+    onTipo1Change: (String) -> Unit,
+    onTipo2Change: (String) -> Unit,
+    onCaracterChange: (String) -> Unit,
     onTamañoChange: (String) -> Unit
 ) {
     Column (verticalArrangement = Arrangement.spacedBy(16.dp)) {
@@ -24,13 +28,13 @@ fun DataColumn(
 
 //        DataTextField("Tipos", tipos, onTiposChange)
         
-        DropDownMenu( "Selecciona un tipo", options = Tipos.values().toList())
+        DropDownMenu( "Selecciona un tipo", options = Tipos.values().toList(), tipo1 ,onValueChange = onTipo1Change)
 
-        DropDownMenu("Selecciona un tipo", options = Tipos.values().toList())
+        DropDownMenu("Selecciona un tipo", options = Tipos.values().toList(), tipo2 ,onValueChange = onTipo2Change)
 
-        DropDownMenu("Selecciona un cáracter", options = Caracteres.values().toList())
+        DropDownMenu("Selecciona un cáracter", options = Caracteres.values().toList(), caracter ,onValueChange = onCaracterChange)
 
-        DropDownMenu("Selecciona un tamaño", options = Tamaños.values().toList())
+        DropDownMenu("Selecciona un tamaño", options = Tamaños.values().toList(), tamaño ,onValueChange = onTamañoChange)
 
 
     }

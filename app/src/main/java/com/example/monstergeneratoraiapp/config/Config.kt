@@ -8,7 +8,7 @@ object Config {
 
     //Files
     const val AUDIO_FILE= "audio.mp3"
-    const val IMAGE_FILE= "image.jpg"
-    const val MASK_FILE= "mask.jpg"
+    const val IMAGE_FILE= "pokeball.png"
+    const val MASK_FILE= "pokeball2.png"
 
 }
