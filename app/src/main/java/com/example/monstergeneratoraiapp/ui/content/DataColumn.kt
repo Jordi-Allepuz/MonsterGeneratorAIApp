@@ -28,13 +28,13 @@ fun DataColumn(
 
 //        DataTextField("Tipos", tipos, onTiposChange)
         
-        DropDownMenu( "Selecciona un tipo", options = Tipos.values().toList(), tipo1 ,onValueChange = onTipo1Change)
+        DropDownMenu( "Selecciona un tipo", options = Tipos.values().toList(), tipo1, onValueChange = { onTipo1Change(it.englishTranslation) }, displayValue = { it.name } )
 
-        DropDownMenu("Selecciona un tipo", options = Tipos.values().toList(), tipo2 ,onValueChange = onTipo2Change)
+        DropDownMenu("Selecciona un tipo", options = Tipos.values().toList(), tipo2 , onValueChange = { onTipo2Change(it.englishTranslation) }, displayValue = { it.name })
 
-        DropDownMenu("Selecciona un cáracter", options = Caracteres.values().toList(), caracter ,onValueChange = onCaracterChange)
+        DropDownMenu("Selecciona un cáracter", options = Caracteres.values().toList(), caracter,  onValueChange = { onCaracterChange(it.englishTranslation) }, displayValue = { it.name })
 
-        DropDownMenu("Selecciona un tamaño", options = Tamaños.values().toList(), tamaño ,onValueChange = onTamañoChange)
+        DropDownMenu("Selecciona un tamaño", options = Tamaños.values().toList(), tamaño , onValueChange = { onTamañoChange(it.englishTranslation) }, displayValue = { it.name })
 
 
     }

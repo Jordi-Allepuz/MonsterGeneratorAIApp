@@ -31,9 +31,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
+import com.example.monstergeneratoraiapp.navigation.AppNavigation
 import com.example.monstergeneratoraiapp.ui.content.DataColumn
 import com.example.monstergeneratoraiapp.ui.content.GeneratorColumn
 import com.example.monstergeneratoraiapp.ui.content.InfoColumn
+import com.example.monstergeneratoraiapp.ui.screens.GeneratorScreen
 import com.example.monstergeneratoraiapp.ui.theme.MonsterGeneratorAIAppTheme
 import com.example.monstergeneratoraiapp.viewmodel.MonsterGeneratorViewModel
 
@@ -51,81 +53,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Content()
+                    AppNavigation()
                 }
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun Content() {
-
-    val viewModel = MonsterGeneratorViewModel()
-
-    val context = LocalContext.current
-
-    var tipo1 by remember { mutableStateOf("") }
-    var tipo2 by remember { mutableStateOf("") }
-    var caracter by remember { mutableStateOf("") }
-    var tamaño by remember { mutableStateOf("") }
-
-    val scrollState = rememberScrollState()
-
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("Pokemon Generator") }
-            )
-        }
-    ) { padding ->
-
-
-        if (viewModel.loading) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
-                CircularProgressIndicator()
-            }
-        }
-
-
-        Column(
-            modifier = Modifier
-                .verticalScroll(scrollState)
-                .alpha(if (viewModel.loading) 0.5f else 1f)
-                .padding(padding)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(32.dp)
-        ) {
-
-            DataColumn(
-                tipo1,
-                tipo2,
-                caracter,
-                tamaño,
-                onTipo1Change = { tipo1 = it },
-                onTipo2Change = { tipo2 = it },
-                onCaracterChange = { caracter = it },
-                onTamañoChange = { tamaño = it }
-            )
-
-            InfoColumn(context, MonsterGeneratorViewModel())
-
-            GeneratorColumn(context, viewModel, tipo1, tipo2, caracter, tamaño)
-
-        }
-
-    }
-}
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MonsterGeneratorAIAppTheme {
-        Content()
-    }
-}

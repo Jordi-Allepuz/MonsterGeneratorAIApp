@@ -77,7 +77,7 @@ class MonsterGeneratorViewModel : ViewModel() {
             messages = listOf(
                 ChatMessage(
                     role = ChatRole.System,
-                    content = "Eeres un asistente especializado en resumir texto de manera extremadamente concisa y eficaz."
+                    content = "Eres un asistente especializado en resumir texto de manera extremadamente concisa y eficaz."
                 ),
                 ChatMessage(
                     role = ChatRole.User,
@@ -91,6 +91,7 @@ class MonsterGeneratorViewModel : ViewModel() {
         stopLoading()
 
     }
+
 
     //Generacion
     @OptIn(BetaOpenAI::class)
@@ -107,10 +108,8 @@ class MonsterGeneratorViewModel : ViewModel() {
 
             startLoading()
 
-//            var prompt = "pokemon image, vector image, ${tipo1.trim()}, ${tipo2.trim()}, ${caracter.trim()}, ${tamaño.trim()}"
-
             var prompt =
-                "Generate an image of a Pokémon, vector image, with the following characteristics: \n" +
+                "Generate an vector hight quality image of a pocket monster like a Pokemon, only image without words, with the following characteristics: \n" +
                         "- Types: ${tipo1.trim()}, ${tipo2.trim()}\n" +
                         "- Character:  ${caracter.trim()} \n" +
                         "- Size: ${tamaño.trim()}\n"
@@ -121,10 +120,29 @@ class MonsterGeneratorViewModel : ViewModel() {
                 prompt += "-Additional Features: ${info.trim()}"
             }
 
+//
+//            // Crear una solicitud a ChatGPT-4 para refinar el prompt
+//            val refinementRequest = ChatCompletionRequest(
+//                model = ModelId(Config.GTP_MODEL),
+//                messages = listOf(
+//                    ChatMessage(
+//                        role = ChatRole.System,
+//                        content = "You are an expert in crafting detailed and effective image generation prompts."
+//                    ),
+//                    ChatMessage(
+//                        role = ChatRole.User,
+//                        content = "Please refine the following prompt for generating a high-quality image: $prompt"
+//                    )
+//                )
+//            )
+
+//            // Obtener el prompt refinado de GPT-4
+//            val refinedPrompt = openAI.chatCompletion(refinementRequest).choices.first().message?.content.toString()
+
+
             val images: List<ImageURL>
 
             if (masked) {
-
                 images = openAI.imageURL(
                     ImageEdit(
                         image = FileSource(
