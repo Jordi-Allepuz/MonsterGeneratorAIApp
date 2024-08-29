@@ -1,8 +1,9 @@
 <p align="center">
   <img src="https://github.com/Jordi-Allepuz/MonsterGeneratorAIApp/blob/master/monstergeneratoricon.png" style="width:250px; height:auto;">
 </p>
+
 <p align="center">
-  <h1>Monster Generator App</h1>
+  <h1 align="center">Monster Generator App</h1>
 </p>
 
 Monster Generator App is an Android application that allows users to create unique monsters or Pokémon using artificial intelligence. By inputting necessary data and recording a voice message, the AI handles the creation process. The app leverages three AI technologies: ChatGPT for summarizing the voice recording, Whisper for transcribing the voice to text, and DALL·E or ChatGPT for generating images.
