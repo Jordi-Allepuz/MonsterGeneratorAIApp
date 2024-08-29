@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/Jordi-Allepuz/MonsterGeneratorAIApp/blob/master/icon.png"style="width:250px; height:auto;">
+  <img src="https://github.com/Jordi-Allepuz/MonsterGeneratorAIApp/blob/master/monstergeneratoricon.png" style="width:250px; height:auto;">
 </p>
 <p align="center">
   <h1>Monster Generator App</h1>
