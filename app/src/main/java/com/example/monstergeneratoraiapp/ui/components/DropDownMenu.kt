@@ -29,7 +29,7 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun <T> DropDownMenu(etiqueta:String ,options:List<T>, value:String ,onValueChange: (T) -> Unit, displayValue: (T) -> String) {
+fun <T> DropDownMenu(etiqueta:String ,options:List<T>, value:String ,onValueChange: (String) -> Unit){
 
     // Estado para controlar si el menú desplegable está expandido o no.
     var expanded by remember { mutableStateOf(false) }
@@ -40,7 +40,7 @@ fun <T> DropDownMenu(etiqueta:String ,options:List<T>, value:String ,onValueChan
         OutlinedTextField(
             value = value,
             enabled = enable,
-            onValueChange = {  },
+            onValueChange = { onValueChange(it) },
             label = { Text(text = etiqueta, color = Color.White) },
             leadingIcon = {
                 Icon(
@@ -72,10 +72,10 @@ fun <T> DropDownMenu(etiqueta:String ,options:List<T>, value:String ,onValueChan
         ) {
             options.forEach { option ->
                 DropdownMenuItem(onClick = {
-                    onValueChange(option)
+                    onValueChange(option.toString())
                     expanded = false
                 }, text = {
-                    Text(text = displayValue(option))
+                    Text(text = option.toString())
                 }, colors = MenuDefaults.itemColors(textColor = Color.White))
 
             }

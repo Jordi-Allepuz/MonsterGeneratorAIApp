@@ -109,36 +109,15 @@ class MonsterGeneratorViewModel : ViewModel() {
             startLoading()
 
             var prompt =
-                "Generate an vector hight quality image of a pocket monster like a Pokemon, only image without words, with the following characteristics: \n" +
-                        "- Types: ${tipo1.trim()}, ${tipo2.trim()}\n" +
-                        "- Character:  ${caracter.trim()} \n" +
-                        "- Size: ${tamaño.trim()}\n"
+                "Genera una imagen vectorial de alta calidad de un monstruo de bolsillo similar a un Pokémon, unicamente la imagen sin palabras, con las siguientes características: \n" +
+                        "- Tipos: ${tipo1.trim()}, ${tipo2.trim()}\n" +
+                        "- Características: ${caracter.trim()} \n" +
+                        "- Tamaño: ${tamaño.trim()}\n"
 
 
             if (info.isNotEmpty()) {
-//                prompt += ", ${info.trim()}"
-                prompt += "-Additional Features: ${info.trim()}"
+                prompt += "-Características adicionales: ${info.trim()}"
             }
-
-//
-//            // Crear una solicitud a ChatGPT-4 para refinar el prompt
-//            val refinementRequest = ChatCompletionRequest(
-//                model = ModelId(Config.GTP_MODEL),
-//                messages = listOf(
-//                    ChatMessage(
-//                        role = ChatRole.System,
-//                        content = "You are an expert in crafting detailed and effective image generation prompts."
-//                    ),
-//                    ChatMessage(
-//                        role = ChatRole.User,
-//                        content = "Please refine the following prompt for generating a high-quality image: $prompt"
-//                    )
-//                )
-//            )
-
-//            // Obtener el prompt refinado de GPT-4
-//            val refinedPrompt = openAI.chatCompletion(refinementRequest).choices.first().message?.content.toString()
-
 
             val images: List<ImageURL>
 
