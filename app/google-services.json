@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "791763342255",
+    "firebase_url": "https://monstergeneratorapp-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "monstergeneratorapp",
+    "storage_bucket": "monstergeneratorapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:791763342255:android:3b4ca3f74b5c8167fbd55a",
+        "android_client_info": {
+          "package_name": "com.example.monstergeneratoraiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHxngcGFrMVPCt9T3_L1letlf-PHdY22A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
